@@ -138,6 +138,13 @@ haddockProjectAction flags _extraArgs globalFlags = do
                        { configVerbosity = haddockProjectVerbosity flags }
                    }
 
+    unless (   fromFlagOrDefault False (haddockProjectHackage flags)
+            || fromFlagOrDefault False (haddockProjectLocal flags)
+            || fromFlagOrDefault False (haddockProjectGenContents flags)) $
+      warn verbosity $ "The index.html file will not be created, specify "
+                    ++ "--gen-contents flag. Alternatively consider `--local` "
+                    ++ "or `--hackage` flag " ++ "which implies it."
+
     --
     -- Construct the build plan and infer the list of packages which haddocks
     -- we need.
