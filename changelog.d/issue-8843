@@ -1,0 +1,9 @@
+synopsis: cabal haddock-project warns the user whn `--gen-index` is not passed
+          and if that's the case doesn't print a message that `index.html` was
+          created, since it wasn't.
+
+          The same PR aslo fixes a bug which allows to use `haddock-project`
+          with packages which contain sublibraries.
+packages: cabal-install
+prs: #8919
+issues: #8843
